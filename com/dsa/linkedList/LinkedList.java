@@ -1,6 +1,7 @@
 package com.dsa.linkedList;
 /*Converting an Array to LinkedList
-* Time complexity is O(n) since it's traversing linearly*/
+* Time complexity is O(n) since it's traversing linearly
+* Time complexity for calculating the length of the linkedList is also O(n)*/
 public class LinkedList {
     static class Node{
         int data;
@@ -33,7 +34,6 @@ public class LinkedList {
             temp = temp.next;
         }
     }
-
     static int lengthOfLinkedList(Node head){
         int count = 0;
         Node temp = head;
@@ -43,6 +43,17 @@ public class LinkedList {
             count++;
         }
         return count;
+    }
+    /*Given an integer value
+    * check if that is present in any node
+    * If present return true*/
+    static boolean checkIfPresent(Node head, int value){
+        Node temp = head;
+        while (temp != null){
+            if(temp.data == value) return true;
+            temp = temp.next;
+        }
+        return false;
     }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
@@ -57,5 +68,8 @@ public class LinkedList {
 
         int length = lengthOfLinkedList(head);
         System.out.println("length of the linkedList "+length);
+
+        boolean present = checkIfPresent(head,16);
+        System.out.println("Data present in the list "+present);
     }
 }
