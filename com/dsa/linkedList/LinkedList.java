@@ -25,6 +25,14 @@ public class LinkedList {
         }
         return head;
     }
+
+    static void traverse(Node head){
+        Node temp = head;
+        while (temp != null){
+            System.out.println(temp.data+" ");
+            temp = temp.next;
+        }
+    }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
         Node node = new Node(arr[0]);
@@ -32,5 +40,8 @@ public class LinkedList {
 
         Node head = convertArr2LL(arr);
         System.out.println("After converting array to the linkedList "+head.data);
+
+        System.out.println("Traversing the list");
+        traverse(head);
     }
 }
