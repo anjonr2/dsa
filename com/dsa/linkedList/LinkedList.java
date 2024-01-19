@@ -33,6 +33,17 @@ public class LinkedList {
             temp = temp.next;
         }
     }
+
+    static int lengthOfLinkedList(Node head){
+        int count = 0;
+        Node temp = head;
+        while (temp != null){
+            System.out.println(temp.data+" ");
+            temp = temp.next;
+            count++;
+        }
+        return count;
+    }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
         Node node = new Node(arr[0]);
@@ -43,5 +54,8 @@ public class LinkedList {
 
         System.out.println("Traversing the list");
         traverse(head);
+
+        int length = lengthOfLinkedList(head);
+        System.out.println("length of the linkedList "+length);
     }
 }
