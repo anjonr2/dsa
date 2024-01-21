@@ -67,6 +67,21 @@ public class InsertionLL {
         }
         return head;
     }
+    static Node insertBeforeValue(Node head, int element, int value){
+        if(head ==null) return null;
+        if(head.data == value){
+            return new Node(element,head);
+        }
+        Node temp = head;
+        while (temp.next != null){
+            if(temp.next.data == value){
+                Node node = new Node(element,temp.next);
+                temp.next = node;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {12,5,8,7};
         Node head = convertarr2LL(arr);
@@ -81,6 +96,10 @@ public class InsertionLL {
 
         head = insertAtK(head,21,3);
         System.out.println("linkedlist after insertion at "+3);
+        traverse(head);
+
+        head = insertBeforeValue(head,34,11);
+        System.out.println("linkedlist after insertion before "+11);
         traverse(head);
     }
 }
