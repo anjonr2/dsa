@@ -34,6 +34,18 @@ public class InsertionLL {
         Node temp = new Node(value,head);
         return temp;
     }
+    static Node insertAtTail(Node head, int value){
+        if(head == null){
+            return new Node(value);
+        }
+        Node temp = head;
+        Node node = new Node(value);
+        while (temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = node;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {12,5,8,7};
         Node head = convertarr2LL(arr);
@@ -41,6 +53,9 @@ public class InsertionLL {
         traverse(head);
         head = insertAtHead(head,6);
         System.out.println("After insertion linkedlist");
+        traverse(head);
+        head = insertAtTail(head,11);
+        System.out.println("linkedlist after insertion at tail");
         traverse(head);
     }
 }
