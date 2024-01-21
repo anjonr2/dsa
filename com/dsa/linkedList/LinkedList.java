@@ -62,6 +62,17 @@ public class LinkedList {
         head = temp.next;
         return head;
     }
+    static Node deleteTailNode(Node head){
+        if(head == null || head.next == null){
+            return null;
+        }
+        Node temp = head;
+        while (temp.next.next != null){
+            temp = temp.next;
+        }
+        temp.next = null;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
         Node node = new Node(arr[0]);
@@ -83,5 +94,8 @@ public class LinkedList {
         System.out.println("LinkedList after deleting the head");
         traverse(newHead);
 
+        newHead = deleteTailNode(head);
+        System.out.print("After deleting the tail");
+        traverse(newHead);
     }
 }
