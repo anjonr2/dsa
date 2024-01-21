@@ -73,6 +73,26 @@ public class LinkedList {
         temp.next = null;
         return head;
     }
+    static Node deleteKthNode(Node head, int k){
+        if(head == null) return head;
+        if(k==1){
+            head = head.next;
+            return head;
+        }
+        Node temp = head;
+        int counter = 0;
+        Node prev = null;
+        while (temp != null){
+            counter++;
+            if(counter == k){
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
         Node node = new Node(arr[0]);
@@ -97,5 +117,9 @@ public class LinkedList {
         newHead = deleteTailNode(head);
         System.out.print("After deleting the tail");
         traverse(newHead);
+
+        Node remove = deleteKthNode(head,3);
+        System.out.println("LinkedList after deleting the node");
+        traverse(remove);
     }
 }
