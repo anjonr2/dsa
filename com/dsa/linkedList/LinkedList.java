@@ -55,6 +55,13 @@ public class LinkedList {
         }
         return false;
     }
+    /*Delete the head of the linkedList*/
+    static Node removeHead(Node head){
+        if(head == null) return head;
+        Node temp = head;
+        head = temp.next;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {2,5,6,8};
         Node node = new Node(arr[0]);
@@ -71,5 +78,10 @@ public class LinkedList {
 
         boolean present = checkIfPresent(head,16);
         System.out.println("Data present in the list "+present);
+
+        Node newHead = removeHead(head);
+        System.out.println("LinkedList after deleting the head");
+        traverse(newHead);
+
     }
 }
