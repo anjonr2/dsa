@@ -55,6 +55,37 @@ public class DLL {
         node.next = null;
         return head;
     }
+    static Node removeKthElement(Node head, int k){
+        if(head == null){
+            return null;
+        }
+        int cnt = 0;
+        Node temp = head;
+        while (temp !=null){
+            cnt ++;
+            if(k==cnt) break;
+            else temp = temp.next;
+        }
+        Node nodePrev = temp.prev;
+        Node nodeNext = temp.next;
+        if(nodePrev == null && nodeNext == null){
+            /*if both nodeNext and nodePrev null it says DLL has only one node*/
+            return null;
+        }
+        else if(nodePrev == null){
+            /*if nodePrev is null it says it is head node of the DLL*/
+            deleteHead(head);
+        }else if(nodeNext == null){
+            /*if nodeNext is null it says it is tail node of the DLL*/
+            deleteTail(head);
+        }else {
+            nodePrev.next = nodeNext;
+            nodeNext.prev = nodePrev;
+            temp.next = null;
+            temp.prev=null;
+        }
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {15,5,8,7,2,3,4};
         Node head = convert2DLL(arr);
@@ -67,6 +98,10 @@ public class DLL {
 
         head= deleteTail(head);
         System.out.println("Linked List after deleting tail node");
+        printDoublyLinkedList(head);
+
+        head = removeKthElement(head,6);
+        System.out.println("Linked List after deleting 3rd node");
         printDoublyLinkedList(head);
     }
 }
