@@ -74,10 +74,10 @@ public class DLL {
         }
         else if(nodePrev == null){
             /*if nodePrev is null it says it is head node of the DLL*/
-            deleteHead(head);
+            return deleteHead(head);
         }else if(nodeNext == null){
             /*if nodeNext is null it says it is tail node of the DLL*/
-            deleteTail(head);
+            return deleteTail(head);
         }else {
             nodePrev.next = nodeNext;
             nodeNext.prev = nodePrev;
@@ -85,6 +85,11 @@ public class DLL {
             temp.prev=null;
         }
         return head;
+    }
+    static Node insertBeforeHead(Node head, int value){
+        Node node = new Node(value,head,null);
+        head.prev = node;
+        return node;
     }
     public static void main(String []args){
         int arr[] = {15,5,8,7,2,3,4};
@@ -100,8 +105,12 @@ public class DLL {
         System.out.println("Linked List after deleting tail node");
         printDoublyLinkedList(head);
 
-        head = removeKthElement(head,6);
+        head = removeKthElement(head,3);
         System.out.println("Linked List after deleting 3rd node");
+        printDoublyLinkedList(head);
+
+        head = insertBeforeHead(head,1);
+        System.out.println("Linked List after inserting before head node");
         printDoublyLinkedList(head);
     }
 }
