@@ -42,14 +42,31 @@ public class DLL {
         temp.next = null;
         return head;
     }
+    static Node deleteTail(Node head){
+        if(head == null || head.next == null){
+            return null;
+        }
+        Node tail = head;
+        while (tail.next != null){
+            tail = tail.next;
+        }
+        Node node = tail.prev;
+        tail.prev = null;
+        node.next = null;
+        return head;
+    }
     public static void main(String []args){
-        int arr[] = {15,5,8,7};
+        int arr[] = {15,5,8,7,2,3,4};
         Node head = convert2DLL(arr);
         System.out.println("Array after converting it to Doubly Linked List");
         printDoublyLinkedList(head);
 
         head= deleteHead(head);
         System.out.println("Linked List after deleting head node");
+        printDoublyLinkedList(head);
+
+        head= deleteTail(head);
+        System.out.println("Linked List after deleting tail node");
         printDoublyLinkedList(head);
     }
 }
