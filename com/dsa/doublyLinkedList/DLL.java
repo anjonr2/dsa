@@ -32,10 +32,24 @@ public class DLL {
             head = head.next;
         }
     }
+    static Node deleteHead(Node head){
+        if(head == null || head.next == null){
+            return null;
+        }
+        Node temp = head;
+        head = head.next;
+        head.prev = null;
+        temp.next = null;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {15,5,8,7};
         Node head = convert2DLL(arr);
         System.out.println("Array after converting it to Doubly Linked List");
+        printDoublyLinkedList(head);
+
+        head= deleteHead(head);
+        System.out.println("Linked List after deleting head node");
         printDoublyLinkedList(head);
     }
 }
