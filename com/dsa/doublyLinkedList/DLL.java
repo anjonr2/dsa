@@ -91,6 +91,17 @@ public class DLL {
         head.prev = node;
         return node;
     }
+    static Node insertBeforeTail(Node head,int value){
+        Node temp = head;
+        while (temp.next != null){
+            temp = temp.next;
+        }
+        Node prevNode = temp.prev;
+        Node node = new Node(value,temp,prevNode);
+        prevNode.next = node;
+        temp.prev = node;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {15,5,8,7,2,3,4};
         Node head = convert2DLL(arr);
@@ -111,6 +122,10 @@ public class DLL {
 
         head = insertBeforeHead(head,1);
         System.out.println("Linked List after inserting before head node");
+        printDoublyLinkedList(head);
+
+        head = insertBeforeTail(head,6);
+        System.out.println("Linked List after inserting before tail node");
         printDoublyLinkedList(head);
     }
 }
