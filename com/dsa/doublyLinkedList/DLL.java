@@ -93,12 +93,32 @@ public class DLL {
     }
     static Node insertBeforeTail(Node head,int value){
         Node temp = head;
+        if(head.next == null){
+            return insertBeforeHead(head,value);
+        }
         while (temp.next != null){
             temp = temp.next;
         }
         Node prevNode = temp.prev;
         Node node = new Node(value,temp,prevNode);
         prevNode.next = node;
+        temp.prev = node;
+        return head;
+    }
+    static Node insertBeforeKthElement(Node head, int k,int value){
+        if(k==1){
+            return insertBeforeHead(head,value);
+        }
+        Node temp = head;
+        int cnt = 0;
+        while (temp != null){
+            cnt++;
+            if(cnt == k) break;
+            temp = temp.next;
+        }
+        Node nodePrev = temp.prev;
+        Node node = new Node(value,temp,nodePrev);
+        nodePrev.next = node;
         temp.prev = node;
         return head;
     }
@@ -126,6 +146,10 @@ public class DLL {
 
         head = insertBeforeTail(head,6);
         System.out.println("Linked List after inserting before tail node");
+        printDoublyLinkedList(head);
+
+        head = insertBeforeKthElement(head,5,4);
+        System.out.println("Linked List after inserting before 4th node");
         printDoublyLinkedList(head);
     }
 }
