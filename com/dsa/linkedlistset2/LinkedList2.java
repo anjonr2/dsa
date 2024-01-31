@@ -79,6 +79,33 @@ public class LinkedList2 {
         }
         return  head;
     }
+    /*Approach 2 to sort list of 0's, 1's and 2's
+    * uses three dummyNodes*/
+    public static Node sortOptimized(Node head){
+        if(head==null || head.next == null) return head;
+        Node zeroHead = new Node(-1), zero = zeroHead;
+        Node oneHead = new Node(-1), one = oneHead;
+        Node twoHead = new Node(-1),two = twoHead;
+        Node temp = head;
+        while (temp!=null){
+            if(temp.data==0){
+                zero.next=temp;
+                zero=temp;
+            } else if (temp.data==1) {
+                one.next=temp;
+                one=temp;
+            }else {
+                two.next=temp;
+                two=temp;
+            }
+            temp=temp.next;
+        }
+        zero.next=(oneHead.next!=null)? oneHead.next : twoHead.next;
+        one.next=twoHead.next;
+        two.next=null;
+
+        return zeroHead.next;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {1, 1, 0, 0, 2,1,2,0};
@@ -93,5 +120,9 @@ public class LinkedList2 {
         Node head2 = sort(head1);
         System.out.println("After sorting the list of 0's, 1's & 2's");
         print(head2);
+
+        Node head3 = sortOptimized(head1);
+        System.out.println("Optimized sorting");
+        print(head3);
     }
 }
