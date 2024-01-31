@@ -106,6 +106,26 @@ public class LinkedList2 {
 
         return zeroHead.next;
     }
+    public static Node deleteNthNodeFromEnd(Node head, int N){
+        int length=0;
+        Node temp=head;
+        while (temp!=null){
+            length++;
+            temp=temp.next;
+        }
+        if(length==N){
+            return head.next;
+        }
+        int res = length-N;
+        temp=head;
+        while (temp!=null){
+            res--;
+            if(res==0) break;
+            temp = temp.next;
+        }
+        temp.next=temp.next.next;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {1, 1, 0, 0, 2,1,2,0};
@@ -124,5 +144,9 @@ public class LinkedList2 {
         Node head3 = sortOptimized(head1);
         System.out.println("Optimized sorting");
         print(head3);
+
+        Node head4 = deleteNthNodeFromEnd(head,4);
+        System.out.println("List after deleting 4th node from end");
+        print(head4);
     }
 }
