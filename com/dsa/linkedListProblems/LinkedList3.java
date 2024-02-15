@@ -29,10 +29,25 @@ public class LinkedList3 {
         }
         return head;
     }
+    public static Node reverse(Node head){
+        Node temp = head;
+        Node back = null;
+        while (temp!=null){
+            Node front = temp.next;
+            temp.next=back;
+            back=temp;
+            temp=front;
+        }
+        return back;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         Node head = convertArr2LL(arr);
         System.out.println("After converting array to LinkedList");
+        traverse(head);
+
+        head = reverse(head);
+        System.out.println("After reversing the linkedList");
         traverse(head);
     }
 }
