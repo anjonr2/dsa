@@ -108,6 +108,34 @@ public class LinkedList3 {
         }
         return null;
     }
+    public static Node findIntersection2(Node head1, Node head2){
+        Node temp1 = head1, temp2=head2;
+        int n1=0,n2=0;
+        while (temp1!=null){
+            n1++;
+            temp1=temp1.next;
+        }
+        while (temp2!=null){
+            n2++;
+            temp2=temp2.next;
+        }
+        if(n1<n2){
+            return intersection(head1,head2,n2-n1);
+        }else {
+            return intersection(head2,head1,n1-n2);
+        }
+    }
+    public static Node intersection(Node head1, Node head2, int d){
+        while (d>0){
+            d--;
+            head2=head2.next;
+        }
+        while (head1 != head2){
+            head1=head1.next;
+            head2=head2.next;
+        }
+        return head1;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {9, 9, 9, 9, 9};
