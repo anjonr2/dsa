@@ -1,5 +1,8 @@
 package com.dsa.linkedListProblems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LinkedList3 {
     static class Node{
         int data;
@@ -88,6 +91,22 @@ public class LinkedList3 {
             head=node;
         }
         return head;
+    }
+    public static Node findIntersection(Node head1, Node head2){
+        Map<Node,Integer> map = new HashMap<Node,Integer>();
+        Node temp = head1;
+        while (temp != null){
+            map.put(temp,1);
+            temp = temp.next;
+        }
+        temp = head2;
+        while (temp != null){
+            if(map.containsKey(temp)){
+                return temp;
+            }
+            temp=temp.next;
+        }
+        return null;
     }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
