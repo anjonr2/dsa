@@ -79,6 +79,23 @@ public class LinkedList4 {
         }
         return null;
     }
+    public static Node startingNodeOfLoop(Node head){
+        Node slow=head;
+        Node fast=head;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                slow=head;
+                while (slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                }
+                return slow;
+            }
+        }
+        return null;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         Node head = convertArr2LL(arr);
