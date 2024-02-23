@@ -136,6 +136,28 @@ public class LinkedList3 {
         }
         return head1;
     }
+    public static Node findIntersection3(Node head1, Node head2){
+        if(head1==null || head2==null) return null;
+        Node temp1= head1, temp2=head2;
+        while (temp1 != temp2){
+            temp1=temp1.next;
+            temp2=temp2.next;
+            if(temp1==temp2) return temp1;
+            if(temp1 == null) temp1=head2;
+            if(temp2 == null) temp2=head1;
+        }
+        return temp1;
+    }
+    public static boolean detectLoop(Node head){
+        Map<Node, Integer> map = new HashMap<>();
+        Node temp = head;
+        while (temp!=null){
+            if(map.containsKey(temp)) return true;
+            map.put(temp,1);
+            temp = temp.next;
+        }
+        return false;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {9, 9, 9, 9, 9};
