@@ -184,6 +184,27 @@ public class LinkedList3 {
         }
         return 0;
     }
+    public static int lengthOfTheLoop1(Node head){
+        Node slow=head;
+        Node fast=head;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(fast==slow)
+            {
+                return findLength(slow,fast);
+            }
+        }
+        return 0;
+    }
+    public static int findLength(Node slow, Node fast){
+        int length=1;
+        while (slow!=fast){
+            length++;
+            fast=fast.next;
+        }
+        return length;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {9, 9, 9, 9, 9};
