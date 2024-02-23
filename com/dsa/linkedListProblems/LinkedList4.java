@@ -55,11 +55,26 @@ public class LinkedList4 {
         }
         return head;
     }
+    public static Node deleteMiddleNode(Node head){
+        Node slow=head;
+        Node fast=head;
+        fast=fast.next.next;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         Node head = convertArr2LL(arr);
-        head=deleteMiddle(head);
+        head=deleteMiddleNode(head);
         System.out.println("After deleting middle node");
+        print(head);
+
+        head=deleteMiddleNode(head);
+        System.out.println("After deleting middle node of even length list");
         print(head);
     }
 }
