@@ -1,5 +1,8 @@
 package com.dsa.linkedListProblems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LinkedList4 {
     static class Node{
         int data;
@@ -65,6 +68,16 @@ public class LinkedList4 {
         }
         slow.next=slow.next.next;
         return head;
+    }
+    public static Node startingNodeOfALoop(Node head){
+        Map<Node,Integer> map = new HashMap<>();
+        Node temp=head;
+        while (temp!=null){
+            if(map.containsKey(temp)) return temp;
+            map.put(temp,1);
+            temp=temp.next;
+        }
+        return null;
     }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
