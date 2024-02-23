@@ -158,6 +158,17 @@ public class LinkedList3 {
         }
         return false;
     }
+    /*Approach 2: to detect a loop using tortoise & hare*/
+    public static boolean detectLoop1(Node head){
+        Node slow = head;
+        Node fast = head;
+        while (fast!= null&&fast.next!=null){
+            slow = slow.next;
+            fast=fast.next.next;
+            if(slow==fast) return true;
+        }
+        return false;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {9, 9, 9, 9, 9};
