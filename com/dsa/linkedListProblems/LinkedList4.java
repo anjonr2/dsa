@@ -29,7 +29,37 @@ public class LinkedList4 {
             head=head.next;
         }
     }
+    public static int length(Node node){
+        int length=0;
+        while (node!=null){
+            length++;
+            node=node.next;
+        }
+        return length;
+    }
+    public static Node deleteMiddle(Node head){
+        if(head==null && head.next==null){
+            return null;
+        }
+        Node temp = head;
+        int length = length(temp);
+        int res = length/2;
+        temp=head;
+        while (temp!=null){
+            res--;
+            if(res==0){
+                temp.next=temp.next.next;
+                break;
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
     public static void main(String []args){
-        System.out.println("test");
+        int arr[] = {2, 5, 6, 8, 4};
+        Node head = convertArr2LL(arr);
+        head=deleteMiddle(head);
+        System.out.println("After deleting middle node");
+        print(head);
     }
 }
