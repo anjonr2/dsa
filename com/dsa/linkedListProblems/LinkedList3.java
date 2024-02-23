@@ -169,6 +169,21 @@ public class LinkedList3 {
         }
         return false;
     }
+    public static int lengthOfTheLoop(Node head){
+        Map<Node,Integer> map = new HashMap<>();
+        Node temp = head;
+        int cnt=1;
+        int length=0;
+        while (temp!=null){
+            if(map.containsKey(temp)) {
+                length = cnt - map.get(temp);
+            }
+            map.put(temp,cnt);
+            cnt++;
+            temp=temp.next;
+        }
+        return 0;
+    }
     public static void main(String []args){
         int arr[] = {2, 5, 6, 8, 4};
         int arr1[] = {9, 9, 9, 9, 9};
