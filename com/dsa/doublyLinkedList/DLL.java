@@ -122,6 +122,30 @@ public class DLL {
         temp.prev = node;
         return head;
     }
+    /*Function to delete all occurrences of a given key*/
+    public static Node deleteAllOccurrences(Node head,int key){
+        Node temp = head;
+        while (temp!=null){
+                if(temp.data==key){
+                    if(temp==head){
+                        /*need to delete the head node so update head to its next node*/
+                        head=head.next;
+                    }
+                    Node nextNode = temp.next;
+                    Node prevNode = temp.prev;
+                    if(nextNode!=null){
+                        nextNode.prev=prevNode;
+                    }
+                    if(prevNode!=null){
+                        prevNode.next=nextNode;
+                    }
+                    temp=nextNode;
+                }else{
+                    temp=temp.next;
+                }
+        }
+        return head;
+    }
     public static void main(String []args){
         int arr[] = {15,5,8,7,2,3,4};
         Node head = convert2DLL(arr);
@@ -150,6 +174,10 @@ public class DLL {
 
         head = insertBeforeKthElement(head,5,4);
         System.out.println("Linked List after inserting before 4th node");
+        printDoublyLinkedList(head);
+
+        head=deleteAllOccurrences(head,8);
+        System.out.println("After deleting all occurrences of key "+8);
         printDoublyLinkedList(head);
     }
 }
