@@ -34,6 +34,10 @@ public class BasicRecursion {
         }
         printSum(i-1,sum+i);
     }
+    public static int sum(int n){
+        if(n==0) return 0;
+        return n+sum(n-1);
+    }
     public static void main(String []args){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the no of time");
@@ -41,8 +45,10 @@ public class BasicRecursion {
 //        System.out.println("printing name "+count+" times");
 //        printName(1,count);
 
-        System.out.println("printing sum");
+//        System.out.println("printing sum");
 //        printNto1(1,count);
-        printSum(count,0);
+//        printSum(count,0);
+       int sum =  sum(count);
+       System.out.println("sum "+sum);
     }
 }
