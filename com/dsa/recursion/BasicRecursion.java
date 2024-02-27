@@ -38,6 +38,11 @@ public class BasicRecursion {
         if(n==0) return 0;
         return n+sum(n-1);
     }
+    public static int factorial(int n){
+        if(n==0)
+            return 1;
+        return n*factorial(n-1);
+    }
     public static void main(String []args){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the no of time");
@@ -48,7 +53,10 @@ public class BasicRecursion {
 //        System.out.println("printing sum");
 //        printNto1(1,count);
 //        printSum(count,0);
-       int sum =  sum(count);
-       System.out.println("sum "+sum);
+//       int sum =  sum(count);
+//       System.out.println("sum "+sum);
+
+       int factorial = factorial(count);
+       System.out.println("factorial of "+count+" "+factorial);
     }
 }
