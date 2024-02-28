@@ -26,6 +26,10 @@ public class Recursion2 {
         * excluding first and last character everytime*/
         return checkPalindrome(str.substring(1,str.length()-1));
     }
+    public static int NthFibbonacci(int n){
+        if(n<=1) return n;
+        return NthFibbonacci(n-1)+NthFibbonacci(n-2);
+    }
     public static void main(String []args){
         int arr[] = {3,9,6,4,5};
         System.out.println("After reversing the array "+arr);
@@ -41,5 +45,8 @@ public class Recursion2 {
 
         String str = "ABCD";
         System.out.println("Given string is Palindrome "+checkPalindrome(str));
+
+        int n= NthFibbonacci(3);
+        System.out.println("3rd fibbonacci number "+n);
     }
 }
