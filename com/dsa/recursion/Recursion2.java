@@ -16,6 +16,16 @@ public class Recursion2 {
         arr[n-i-1]=temp;
         reverse(arr,i+1,n);
     }
+    public static boolean checkPalindrome(String str){
+        if(str.length()==0 || str.length()==1) return true;
+        int i=0;
+        if(str.charAt(i)!=str.charAt(str.length()-i-1)) return false;
+        i= i+1;
+        if(i>=str.length()/2) return true;
+        /*in recursive function call passing the substring of the original string
+        * excluding first and last character everytime*/
+        return checkPalindrome(str.substring(1,str.length()-1));
+    }
     public static void main(String []args){
         int arr[] = {3,9,6,4,5};
         System.out.println("After reversing the array "+arr);
@@ -28,5 +38,8 @@ public class Recursion2 {
         for(int el : arr){
             System.out.print(" "+el+" ");
         }
+
+        String str = "ABCD";
+        System.out.println("Given string is Palindrome "+checkPalindrome(str));
     }
 }
