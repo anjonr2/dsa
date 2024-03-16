@@ -16,6 +16,13 @@ public class BinaryTree {
         preorder(root.left);
         preorder(root.right);
     }
+    /*left->root->right*/
+    public static void inorder(Node root){
+        if(root==null) return;
+        inorder(root.left);
+        System.out.println(root.data);
+        inorder(root.right);
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node right = new Node(2);
@@ -24,5 +31,8 @@ public class BinaryTree {
         root.right=right;
         System.out.println("pre order traversal");
         preorder(root);
+
+        System.out.println("Inorder traversal");
+        inorder(root);
     }
 }
