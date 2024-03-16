@@ -9,11 +9,20 @@ public class BinaryTree {
             this.data=data;
         }
     }
+    /*Root->Left->Right*/
+    public static void preorder(Node root){
+        if(root==null) return;
+        System.out.println(root.data);
+        preorder(root.left);
+        preorder(root.right);
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node right = new Node(2);
         Node left = new Node(3);
         root.left=left;
         root.right=right;
+        System.out.println("pre order traversal");
+        preorder(root);
     }
 }
