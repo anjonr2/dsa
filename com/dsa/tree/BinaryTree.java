@@ -23,6 +23,13 @@ public class BinaryTree {
         System.out.println(root.data);
         inorder(root.right);
     }
+    /*Left->right->root*/
+    public static void postorder(Node root){
+        if(root==null) return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.println(root.data);
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node right = new Node(2);
@@ -34,5 +41,8 @@ public class BinaryTree {
 
         System.out.println("Inorder traversal");
         inorder(root);
+
+        System.out.println("Post order traversal");
+        postorder(root);
     }
 }
