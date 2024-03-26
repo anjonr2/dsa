@@ -9,6 +9,17 @@ public class BinaryTree2 {
             this.data=data;
         }
     }
+    static class Pair{
+        Node node;
+        int data;
+        public Pair(Node node, int data){
+            this.node=node;
+            this.data=data;
+        }
+    }
+    public void preInPostTraversal(Node root){
+
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node node1 = new Node(2);
@@ -17,16 +28,12 @@ public class BinaryTree2 {
         Node node4 = new Node(5);
         Node node5 = new Node(6);
         Node node6 = new Node(7);
-        Node node7 = new Node(8);
-        Node node8 = new Node(9);
 
         root.left=node1;
-        root.right=node2;
-        node1.left=node3;
-        node1.right=node4;
-        node2.left=node5;
-        node2.right=node6;
-        node3.left=node7;
-        node6.left=node8;
+        node1.left=node2;
+        node1.right=node3;
+        root.right=node4;
+        node4.left=node5;
+        node4.right=node6;
     }
 }
