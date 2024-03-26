@@ -1,5 +1,9 @@
 package com.dsa.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class BinaryTree2 {
     static class Node{
         int data;
@@ -18,6 +22,53 @@ public class BinaryTree2 {
         }
     }
     public void preInPostTraversal(Node root){
+        Stack<Pair> stack = new Stack<Pair>();
+        List<Integer> preorder = new ArrayList<Integer>();
+        List<Integer> inorder = new ArrayList<Integer>();
+        List<Integer> postorder = new ArrayList<Integer>();
+        /*to start with
+        * initially stack will have
+        * root node and num as 1*/
+        stack.push(new Pair(root,1));
+
+        /*Need to keep traversing
+        * till the stack
+        * is not empty*/
+        while (!stack.isEmpty()){
+            Pair pair = stack.pop();
+
+            /*this is part of pre order
+            * check if data is 1
+            * check if that node which is popped from stack
+            * has a left node
+            * then add that to the stack*/
+            if(pair.data==1){
+                preorder.add(pair.node.data);
+                pair.data++;
+                stack.push(pair);
+
+                if(pair.node.left!=null){
+                    stack.push(new Pair(pair.node.left,1));
+                }
+            }
+            /*this is part of inorder
+             * check if data is 2
+             * check if that node which is popped from stack
+             * has a right node
+             * then add that to the stack*/
+            if(pair.data==2){
+                inorder.add(pair.node.data);
+                pair.data++;
+                stack.push(pair);
+
+                if(pair.node.right!=null){
+                    stack.push(new Pair(pair.node.right,1));
+                }
+            }
+            else {
+                postorder.add(pair.node.data);
+            }
+        }
 
     }
     public static void main(String []args){
