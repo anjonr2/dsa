@@ -69,7 +69,14 @@ public class BinaryTree2 {
                 postorder.add(pair.node.data);
             }
         }
+    }
+    /*maxDepth or height of a tree calculating recursively*/
+    public static int maxDepth(Node root){
+        if(root==null) return 0;
+        int lh = maxDepth(root.left);
+        int rh = maxDepth(root.right);
 
+        return 1 + Math.max(lh,rh);
     }
     public static void main(String []args){
         Node root = new Node(1);
@@ -86,5 +93,8 @@ public class BinaryTree2 {
         root.right=node4;
         node4.left=node5;
         node4.right=node6;
+
+        int maxDepth = maxDepth(root);
+        System.out.println("max depth is "+maxDepth);
     }
 }
