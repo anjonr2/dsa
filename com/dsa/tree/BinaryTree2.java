@@ -80,7 +80,11 @@ public class BinaryTree2 {
     }
     public static boolean isBalanced(Node root){
         if(root==null) return true;
+
+        /*here checking the height difference*/
         if((Math.abs(height(root.left)-height(root.right)))>1) return false;
+
+        /*recursively calling this to the left and right of the binary tree*/
         return isBalanced(root.left) && isBalanced(root.right);
     }
     /*Calculating height of a given tree*/
