@@ -86,7 +86,7 @@ public class BinaryTree2 {
     /*Calculating height of a given tree*/
     public static int height(Node root){
         if(root==null) return 0;
-        return Math.max(height(root.left), height(root.right));
+        return 1+Math.max(height(root.left), height(root.right));
     }
     public static boolean isBalanced2(Node root){
         return height2(root) !=-1;
@@ -124,7 +124,7 @@ public class BinaryTree2 {
         int maxDepth = maxDepth(root);
         System.out.println("max depth is "+maxDepth);
 
-        boolean isBalanced = isBalanced2(root);
+        boolean isBalanced = isBalanced(root);
         System.out.println("given binary tree is balanced "+isBalanced);
     }
 }
