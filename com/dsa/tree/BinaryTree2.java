@@ -78,6 +78,16 @@ public class BinaryTree2 {
 
         return 1 + Math.max(lh,rh);
     }
+    public static boolean isBalanced(Node root){
+        if(root==null) return true;
+        if((Math.abs(height(root.left)-height(root.right)))>1) return false;
+        return isBalanced(root.left) && isBalanced(root.right);
+    }
+    /*Calculating height of a given tree*/
+    public static int height(Node root){
+        if(root==null) return 0;
+        return Math.max(height(root.left), height(root.right));
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node node1 = new Node(2);
@@ -86,15 +96,23 @@ public class BinaryTree2 {
         Node node4 = new Node(5);
         Node node5 = new Node(6);
         Node node6 = new Node(7);
-
+        Node node7 = new Node(8);
+        Node node8 = new Node(9);
+        Node node9 = new Node(10);
         root.left=node1;
         node1.left=node2;
         node1.right=node3;
         root.right=node4;
         node4.left=node5;
         node4.right=node6;
-
+        node6.left=node7;
+        node7.left=node8;
+        node8.left=node9;
+        
         int maxDepth = maxDepth(root);
         System.out.println("max depth is "+maxDepth);
+
+        boolean isBalanced = isBalanced(root);
+        System.out.println("given binary tree is balanced "+isBalanced);
     }
 }
