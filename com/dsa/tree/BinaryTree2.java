@@ -78,7 +78,12 @@ public class BinaryTree2 {
 
         return 1 + Math.max(lh,rh);
     }
-    public static boolean isBalanced(Node root){
+    public static boolean isBalanced(Node root)
+    /*Calculating height of a given tree*/
+    public static int height(Node root){
+        if(root==null) return 0;
+        return 1+Math.max(height(root.left), height(root.right));
+    }{
         if(root==null) return true;
 
         /*here checking the height difference*/
@@ -103,6 +108,27 @@ public class BinaryTree2 {
         if(rh==-1) return -1;
         if((Math.abs(lh-rh))>1) return -1;
         return 1 + Math.max(lh,rh);
+    }
+    public static int diameter(Node root){
+        if(root==null) return 0;
+        int option1 = height3(root.left)+height3(root.right);
+        int option2 = diameter(root.left);
+        int option3 = diameter(root.right);
+
+        return Math.max(option1,Math.max(option2,option3));
+    }
+    public static int height3(Node root){
+        if(root==null) return 0;
+        int lh = height3(root.left);
+        int rh = height3(root.right);
+
+        return 1+Math.max(lh,rh);
+    }
+    public static boolean isSameTree(Node root1, Node root2){
+        if(root1==null && root2==null){
+            return (root1==root2);
+        }
+        return (root1.data==root2.data) && isSameTree(root1.left,root2.left) && isSameTree(root1.right,root2.right);
     }
     public static void main(String []args){
         Node root = new Node(1);
