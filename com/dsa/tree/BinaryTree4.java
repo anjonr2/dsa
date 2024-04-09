@@ -165,6 +165,30 @@ public class BinaryTree4 {
         return ans;
     }
 
+    public static ArrayList<Integer> bottomView(Node root) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        if (root == null)
+            return ans;
+        Map<Integer, Integer> map = new HashMap<>();
+        Queue<Pair> queue = new LinkedList<>();
+        queue.offer(new Pair(root, 0));
+        while (!queue.isEmpty()) {
+            Pair pair = queue.remove();
+            int line = pair.vertical;
+            map.put(line, pair.node.data);
+            if (pair.node.left != null) {
+                queue.add(new Pair(pair.node.left, line - 1));
+            }
+            if (pair.node.right != null) {
+                queue.add(new Pair(pair.node.right, line + 1));
+            }
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            ans.add(entry.getValue());
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
 
     }
