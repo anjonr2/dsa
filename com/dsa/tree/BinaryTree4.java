@@ -205,6 +205,19 @@ public class BinaryTree4 {
         rightView(root.left, list, level + 1);
     }
 
+    public boolean isSymmetric(Node root) {
+        return root == null || isSymmetricHelp(root.left, root.right);
+    }
+
+    public boolean isSymmetricHelp(Node left, Node right) {
+        if (left == null || right == null) {
+            return left == right;
+        }
+        if (left.data != right.data)
+            return false;
+        return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
+    }
+
     public static void main(String[] args) {
 
     }
