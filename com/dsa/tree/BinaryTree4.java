@@ -189,6 +189,22 @@ public class BinaryTree4 {
         return ans;
     }
 
+    public List<Integer> rightSideView(Node root) {
+        List<Integer> result = new ArrayList<>();
+        rightView(root, result, 0);
+        return result;
+    }
+
+    public void rightView(Node root, List<Integer> list, int level) {
+        if (root == null) {
+            return;
+        }
+        if (level == list.size())
+            list.add(root.data);
+        rightView(root.right, list, level + 1);
+        rightView(root.left, list, level + 1);
+    }
+
     public static void main(String[] args) {
 
     }
