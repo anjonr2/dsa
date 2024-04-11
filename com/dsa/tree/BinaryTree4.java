@@ -218,6 +218,26 @@ public class BinaryTree4 {
         return isSymmetricHelp(left.left, right.right) && isSymmetricHelp(left.right, right.left);
     }
 
+    public boolean getPath(Node root, ArrayList<Integer> res, int value) {
+        if (root == null)
+            return false;
+        res.add(root.data);
+        if (root.data == value)
+            return true;
+        if (getPath(root.left, res, value) || getPath(root.right, res, value))
+            return true;
+        res.remove(res.size() - 1);
+        return false;
+    }
+
+    public ArrayList<Integer> solve(Node root, int value) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if (root == null)
+            return result;
+        getPath(root, result, value);
+        return result;
+    }
+
     public static void main(String[] args) {
 
     }
