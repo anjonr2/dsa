@@ -45,6 +45,19 @@ public class MatrixProblems {
         return result;
     }
 
+    public static boolean search(int[][] matrix, int value) {
+        int rowsize = matrix.length;
+        int colSize = matrix[0].length;
+
+        int rowBegin = 0;
+        int colEnd = colSize - 1;
+        while (rowBegin <= rowsize && colEnd >= 0) {
+            if (matrix[rowBegin][colEnd] == value) {
+                return true;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("test");
     }
