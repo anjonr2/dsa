@@ -45,6 +45,8 @@ public class MatrixProblems {
         return result;
     }
 
+    // search in matrix
+    // if matrix is rowwise and colwise sorted
     public static boolean search(int[][] matrix, int value) {
         // initially pointer will be at last element of first row
         int rowsize = matrix.length;
@@ -67,6 +69,39 @@ public class MatrixProblems {
                 rowBegin++;
         }
         return false;
+    }
+
+    // search in a matrix
+    // given condition each row is sorted
+    // first element in current row is greater than
+    // last element of previous row
+    public static int[] search1(int[][] matrix, int tagret) {
+        int rowSize = matrix.length;
+        int colSize = matrix[0].length;
+        int[] result = new int[2];
+        if (matrix.length == 0)
+            return result;
+        int low = 0;
+        int high = (rowSize * colSize) - 1;
+        while (low <= high) {
+            int mid = (low + (high - low) / 2);
+            int rowIdx = mid / colSize;
+            int colIdx = mid % colSize;
+            if (matrix[rowIdx][colIdx] == tagret) {
+                result[0] = rowIdx;
+                result[1] = colIdx;
+            }
+            if (matrix[rowIdx][colIdx] > tagret) {
+                // if mid element is greater than target
+                // then we do a search on the left side
+                high = mid - 1;
+            } else {
+                // if target is greater
+                // then we do a search on right side
+                low = mid + 1;
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
