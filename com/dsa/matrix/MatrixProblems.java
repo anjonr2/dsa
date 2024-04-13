@@ -1,6 +1,7 @@
 package com.dsa.matrix;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MatrixProblems {
@@ -102,6 +103,23 @@ public class MatrixProblems {
             }
         }
         return result;
+    }
+
+    public static int findMedian(int[][] matrix) {
+        int rowSize = matrix.length;
+        int colSize = matrix[0].length;
+        int size = rowSize * colSize;
+        int list[] = new int[size];
+        // this is to keep track of list arr
+        int idx = 0;
+        for (int i = 0; i < rowSize; i++) {
+            for (int j = 0; j < colSize; j++) {
+                list[idx] = matrix[i][j];
+                idx++;
+            }
+        }
+        Arrays.sort(list);
+        return list[(rowSize * colSize / 2)];
     }
 
     public static void main(String[] args) {
