@@ -105,6 +105,8 @@ public class MatrixProblems {
         return result;
     }
 
+    // given matrix is sorted
+    // matrix is having odd number of row and column
     public static int findMedian(int[][] matrix) {
         int rowSize = matrix.length;
         int colSize = matrix[0].length;
