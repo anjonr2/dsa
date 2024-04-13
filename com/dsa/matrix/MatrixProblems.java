@@ -46,16 +46,27 @@ public class MatrixProblems {
     }
 
     public static boolean search(int[][] matrix, int value) {
+        // initially pointer will be at last element of first row
         int rowsize = matrix.length;
         int colSize = matrix[0].length;
 
         int rowBegin = 0;
         int colEnd = colSize - 1;
+        // need to traverse matrix until it gets out of it
+        // since rows will be moving down(incrementing) so it should be less than
+        // rowSize
+        // since column will be moving left(decreasing) so it should not be less than 0
         while (rowBegin <= rowsize && colEnd >= 0) {
             if (matrix[rowBegin][colEnd] == value) {
                 return true;
             }
+            // if the value is less than current val then move pointer towards left
+            if (matrix[rowBegin][colEnd] > value)
+                colEnd--;
+            else
+                rowBegin++;
         }
+        return false;
     }
 
     public static void main(String[] args) {
