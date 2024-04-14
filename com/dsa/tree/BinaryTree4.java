@@ -46,7 +46,7 @@ public class BinaryTree4 {
         }
         /* In boundary first element will come root node element */
         result.add(Integer.valueOf(root.data));
-        result.add(addLeftNode(root.left, result));
+        // result.add(addLeftNode(root.left, result));
         return result;
     }
 
@@ -236,6 +236,22 @@ public class BinaryTree4 {
             return result;
         getPath(root, result, value);
         return result;
+    }
+
+    // function to return lowest common ancestor of two nodes
+    public static Node lca(Node root, Node n1, Node n2) {
+        if (root == null)
+            return null;
+        if (root.data == n1.data || root.data == n2.data)
+            return root;
+        Node left = lca(root.left, n1, n2);
+        Node right = lca(root.right, n1, n2);
+        if (left == null)
+            return right;
+        if (right == null)
+            return left;
+
+        return root;
     }
 
     public static void main(String[] args) {
