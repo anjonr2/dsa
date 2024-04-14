@@ -254,6 +254,25 @@ public class BinaryTree4 {
         return root;
     }
 
+    // this will be used to calculate the maximum width of a binary tree
+    public static class Pair1 {
+        Node node;
+        int index;
+
+        public Pair1(Node node, int index) {
+            this.node = node;
+            this.index = index;
+        }
+    }
+
+    // function to calculate maximum width of a binary tree
+    public static int widthOfBinaryTree(Node root) {
+        if (root == null)
+            return 0;
+        int maxWidth = 0;
+        return maxWidth;
+    }
+
     public static void main(String[] args) {
 
     }
