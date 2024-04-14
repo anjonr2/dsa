@@ -270,6 +270,37 @@ public class BinaryTree4 {
         if (root == null)
             return 0;
         int maxWidth = 0;
+        // to do the level order traversal
+        Queue<Pair1> queue = new LinkedList<>();
+
+        queue.offer(new Pair1(root, 0));
+        while (!queue.isEmpty()) {
+            // this is to get no of nodes/elements in every level
+            int size = queue.size();
+
+            // this will give the minimum index in every level
+            int min = queue.peek().index;
+
+            int first = 0;
+            int last = 0;
+            for (int i = 0; i < size; i++) {
+                int currentIdx = queue.peek().index - min;
+                Node node = queue.peek().node;
+                // remove element at the front
+                queue.poll();
+                if (i == 0)
+                    first = currentIdx;
+                if (i == size - 1)
+                    last = currentIdx;
+                if (node.left != null) {
+                    queue.offer(new Pair1(node.left, currentIdx * 2 + 1));
+                }
+                if (node.right != null) {
+                    queue.offer(new Pair1(node.right, currentIdx * 2 + 2));
+                }
+            }
+            maxWidth = Math.max(maxWidth, last - first + 1);
+        }
         return maxWidth;
     }
 
