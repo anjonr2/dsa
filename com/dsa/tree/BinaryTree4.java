@@ -307,8 +307,42 @@ public class BinaryTree4 {
     // this function returns list of all nodes
     // from a target node that are present in a distance of K
     public static List<Integer> distanceK(Node root, Node targetNode, int k) {
+        // a map of parent and it's child node
         Map<Node, Node> parent_track = new HashMap<>();
         markParents(root, parent_track, targetNode);
+        Map<Node, Boolean> visited = new HashMap<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(targetNode);
+        visited.put(targetNode, true);
+        // this variable will be storing the distance moved
+        int currentLevel = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            if (currentLevel == k)
+                break;
+            currentLevel++;
+            for (int i = 0; i < size; i++) {
+                Node current = queue.poll();
+                if (current.left != null && visited.get(current.left) == null) {
+                    queue.offer(current.left);
+                    visited.put(current.left, true);
+                }
+                if (current.right != null && visited.get(current.right) == null) {
+                    queue.offer(current.right);
+                    visited.put(current.right, true);
+                }
+                if (parent_track.get(current) != null && visited.get(parent_track.get(current)) == null) {
+                    queue.offer(parent_track.get(current));
+                    visited.put(parent_track.get(current), true);
+                }
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            result.add(current.data);
+        }
+        return result;
     }
 
     // doing a level order traversal
@@ -318,6 +352,8 @@ public class BinaryTree4 {
         while (!queue.isEmpty()) {
             Node current = queue.poll();
             if (current.left != null) {
+                // key is child node
+                // value is parent node
                 parentMap.put(current.left, current);
                 queue.offer(current.left);
             }
