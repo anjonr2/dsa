@@ -304,6 +304,30 @@ public class BinaryTree4 {
         return maxWidth;
     }
 
+    // this function returns list of all nodes
+    // from a target node that are present in a distance of K
+    public static List<Integer> distanceK(Node root, Node targetNode, int k) {
+        Map<Node, Node> parent_track = new HashMap<>();
+        markParents(root, parent_track, targetNode);
+    }
+
+    // doing a level order traversal
+    public static void markParents(Node root, Map<Node, Node> parentMap, Node targetNode) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            if (current.left != null) {
+                parentMap.put(current.left, current);
+                queue.offer(current.left);
+            }
+            if (current.right != null) {
+                parentMap.put(current.right, current);
+                queue.offer(current.right);
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
     }
