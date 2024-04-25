@@ -364,6 +364,36 @@ public class BinaryTree4 {
         }
     }
 
+    public int countNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = leftDepth(root);
+        int rightDepth = rightDepth(root);
+        if (leftDepth == rightDepth) {
+            return (int) Math.pow(2, rightDepth) - 1;
+        }
+        return 1 + countNodes(root.right) + countNodes(root.left);
+    }
+
+    private int rightDepth(Node root) {
+        int depth = 0;
+        while (root != null) {
+            root = root.right;
+            depth++;
+        }
+        return depth;
+    }
+
+    private int leftDepth(Node root) {
+        int depth = 0;
+        while (root != null) {
+            root = root.left;
+            depth++;
+        }
+        return depth;
+    }
+
     public static void main(String[] args) {
 
     }
