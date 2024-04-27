@@ -451,6 +451,36 @@ public class BinaryTree4 {
         return root;
     }
 
+    // post order and in order traversal is given
+    public Node buildBinaryTreeFromTraversal(int[] inOrder, int[] postOrder) {
+        if (inOrder.length != postOrder.length)
+            return null;
+        Map<Integer, Integer> inOrderIndexMap = new HashMap<>();
+        for (int i = 0; i < inOrder.length; i++) {
+            inOrderIndexMap.put(inOrder[i], i);
+        }
+        return buildTreePostIn(inOrder, 0, inOrder.length-1, postOrder, 0, postOrder.length-1, inOrderIndexMap)
+    }
+
+    // is = starting point of in order traversal array
+    // ie = ending point of the in order traversal array
+    // ps=starting point of post order traversal array
+    // pe = ending point of post order traversal array
+    private Node buildTreePostIn(int[] inOrder, int is, int ie, int postOrder[], int ps, int pe,
+            Map<Integer, Integer> inorderIndexMap) {
+        if (ps > pe || is > ie)
+            return null;
+        Node root = new Node(postOrder[pe]);
+
+        // this gives the index of root the element from inorder traversal
+        int inRoot = inorderIndexMap.get(root.data);
+        // this gives total number of element present on the left of root element
+        int numsLeft = inRoot - is;
+        root.left=buildTreePostIn(inOrder, is, inRoot-1, postOrder, ps, ps+numsLeft-1, inorderIndexMap);
+        root.right=buildTreePostIn(inOrder, inRoot+1, ie, postOrder, ps+numsLeft, pe-1, inorderIndexMap)
+        return root;
+    }
+
     public static void main(String[] args) {
 
     }
