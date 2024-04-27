@@ -428,9 +428,27 @@ public class BinaryTree4 {
         Map<Integer, Integer> inOrderIndexMap = new HashMap<>();
         // this map will store array elements as its key and indexes of array as its
         // value
+        // this map will help avoid iterating in order array again and again
         for (int i = 0; i < inOrder.length; i++) {
             inOrderIndexMap.put(inOrder[i], i);
         }
+        // here rootIndex is passed as 0 because root is the very first element in a pre
+        // order traversal array
+        // left bound is the starting index of in order traversal
+        // right bound is the ending index of the in order traversal
+        return splitTree(preOrder, inOrderIndexMap, 0, 0, inOrder.length - 1);
+    }
+
+    public Node splitTree(int[] preOrder, Map<Integer, Integer> inorderIndexMap, int rootIndex, int left, int right) {
+        Node root = new Node(preOrder[rootIndex]);
+
+        // this returns position of root node from in order traversal array
+        int mid = inorderIndexMap.get(root.data);
+        if (mid > left) {
+            root.left=splitTree(preOrder, inorderIndexMap, rootIndex+1, left, mid-1);
+            root.right=splitTree(preOrder, inorderIndexMap, rootIndex+mid-left+1, mid+1, right)
+        }
+        return root;
     }
 
     public static void main(String[] args) {
