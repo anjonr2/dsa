@@ -420,6 +420,19 @@ public class BinaryTree4 {
         root.right = buildTree(preOrder, preStart+numsLeft+1, preEnd, inOrder, rootPositionInInorder+1, inEnd, inMap)
     }
 
+    // build a binary tree from a given
+    // pre order and in order traversal
+    public Node buildBinaryTree(int[] inOrder, int[] preOrder) {
+        // this is to identify where does root of the binary tree exists in in order
+        // traversal
+        Map<Integer, Integer> inOrderIndexMap = new HashMap<>();
+        // this map will store array elements as its key and indexes of array as its
+        // value
+        for (int i = 0; i < inOrder.length; i++) {
+            inOrderIndexMap.put(inOrder[i], i);
+        }
+    }
+
     public static void main(String[] args) {
 
     }
