@@ -394,6 +394,32 @@ public class BinaryTree4 {
         return depth;
     }
 
+    // If preorder and in order traversal is given form an unique binary tree
+    public Node buildTree(int[] preOrder, int[] inOrder) {
+        // map to store all elements of in order traversal
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < inOrder.length; i++) {
+            map.put(inOrder[i], i);
+        }
+        Node root = buildTree(preOrder, 0, 0, inOrder, 0, 0, map);
+        return root;
+    }
+
+    public Node buildTree(int[] preOrder, int preStart, int preEnd, int[] inOrder, int inStart, int inEnd,
+            Map<Integer, Integer> inMap) {
+        if (preStart > preEnd || inStart > inEnd)
+            return null;
+        // first element of preOrder will always be the root node
+        // of the unique binary tree
+        Node root = new Node(preOrder[preStart]);
+        int rootPositionInInorder = inMap.get(root.data);
+        int numsLeft = rootPositionInInorder - inStart;
+        root.left = buildTree(preOrder, preStart + 1, preStart + numsLeft, inOrder, inStart, rootPositionInInorder - 1,
+                inMap);
+        root.right = buildTree(preOrder, preStart+numsLeft+1, preEnd, inOrder, rootPositionInInorder+1, inEnd, inMap)
+    }
+
     public static void main(String[] args) {
 
     }
