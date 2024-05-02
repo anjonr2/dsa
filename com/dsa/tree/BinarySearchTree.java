@@ -34,4 +34,21 @@ public class BinarySearchTree {
         }
         return ceil;
     }
+
+    public static int floorInBST(Node root, int key) {
+        int floor = -1;
+        while (root != null) {
+            if (root.data == key) {
+                floor = key;
+                return floor;
+            }
+            if (key > root.data) {
+                floor = root.data;
+                root = root.right;
+            } else {
+                root = root.left;
+            }
+        }
+        return floor;
+    }
 }
