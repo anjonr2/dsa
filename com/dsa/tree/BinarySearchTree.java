@@ -15,5 +15,23 @@ public class BinarySearchTree {
         while (root != null && root.data != value) {
             root = value < root.data ? root.left : root.right;
         }
+        return root;
+    }
+
+    public static int findCeil(Node root, int key) {
+        int ceil = -1;
+        while (root != null) {
+            if (root.data == key) {
+                ceil = key;
+                return ceil;
+            }
+            if (key > root.data) {
+                root = root.right;
+            } else {
+                ceil = root.data;
+                root = root.left;
+            }
+        }
+        return ceil;
     }
 }
