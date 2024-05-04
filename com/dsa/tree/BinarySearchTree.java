@@ -152,4 +152,19 @@ public class BinarySearchTree {
             return false;
         return isValidBST(root.right, root.data, maxVal) && isValidBST(root.left, minVal, root.data);
     }
+
+    // this function finds the lca of two given node
+    public Node lowestCommonAncestor(Node root, Node p, Node q) {
+        if (root == null)
+            return null;
+        int curr = root.data;
+        // if both the node p and q is greater than root then it lies on the right
+        if (curr < p.data && curr < q.data) {
+            return lowestCommonAncestor(root.right, p, q);
+        }
+        if (curr > p.data && curr > q.data) {
+            return lowestCommonAncestor(root.left, p, q);
+        }
+        return root;
+    }
 }
