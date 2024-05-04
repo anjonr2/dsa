@@ -51,4 +51,27 @@ public class BinarySearchTree {
         }
         return floor;
     }
+
+    public Node insert(Node root, int value) {
+        // if the root is null return that value itself as the root of the tree
+        if (root == null)
+            return new Node(value);
+        Node temp = root;
+        while (true) {
+            if (temp.data <= value) {
+                if (temp.right != null)
+                    temp = temp.right;
+                else
+                    temp.right = new Node(value);
+                break;
+            } else {
+                if (temp.left != null)
+                    temp = temp.left;
+                else
+                    temp.left = new Node(value);
+                break;
+            }
+        }
+        return root;
+    }
 }
