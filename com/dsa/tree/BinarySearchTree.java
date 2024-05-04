@@ -120,4 +120,24 @@ public class BinarySearchTree {
             return root;
         return findLastRight(root.right);
     }
+
+    public int KthLargest(Node root, int k) {
+        int ans = -1;
+        solve(root, k, ans);
+        return ans;
+    }
+
+    public void solve(Node root, int k, int ans) {
+        int counter = 1;
+        if (root == null)
+            return;
+        solve(root.right, k, ans);
+        if (counter == k) {
+            ans = root.data;
+            counter++;
+            return;
+        }
+        counter++;
+        solve(root.left, k, ans);
+    }
 }
