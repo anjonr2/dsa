@@ -167,4 +167,20 @@ public class BinarySearchTree {
         }
         return root;
     }
+
+    // construct a bst from a given pre order traversal
+    public Node bstFromPreOrder(int[] preOrder) {
+        int i = 0;
+        return bstFromPreOrder(preOrder, Integer.MAX_VALUE, i);
+    }
+
+    public Node bstFromPreOrder(int[] preOrder, int upperBound, int counter) {
+        if (counter == preOrder.length || preOrder[counter] > upperBound)
+            return null;
+        Node root = new Node(preOrder[counter++]);
+        root.left = bstFromPreOrder(preOrder, counter, root.data);
+        root.right = bstFromPreOrder(preOrder, counter, upperBound);
+
+        return root;
+    }
 }
