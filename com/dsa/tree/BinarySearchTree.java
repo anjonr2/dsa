@@ -171,15 +171,15 @@ public class BinarySearchTree {
     // construct a bst from a given pre order traversal
     public Node bstFromPreOrder(int[] preOrder) {
         int i = 0;
-        return bstFromPreOrder(preOrder, Integer.MAX_VALUE, i);
+        return bstFromPreOrder(preOrder, Integer.MAX_VALUE, new int[] { 0 });
     }
 
-    public Node bstFromPreOrder(int[] preOrder, int upperBound, int counter) {
-        if (counter == preOrder.length || preOrder[counter] > upperBound)
+    public Node bstFromPreOrder(int[] preOrder, int upperBound, int arr[]) {
+        if (arr[0] == preOrder.length || preOrder[arr[0]] > upperBound)
             return null;
-        Node root = new Node(preOrder[counter++]);
-        root.left = bstFromPreOrder(preOrder, counter, root.data);
-        root.right = bstFromPreOrder(preOrder, counter, upperBound);
+        Node root = new Node(preOrder[arr[0]++]);
+        root.left = bstFromPreOrder(preOrder, root.data, arr);
+        root.right = bstFromPreOrder(preOrder, upperBound, arr);
 
         return root;
     }
