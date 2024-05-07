@@ -183,4 +183,18 @@ public class BinarySearchTree {
 
         return root;
     }
+
+    // code to return in order successor for a given node
+    public Node inorderSuccessor(Node root, Node node) {
+        Node successor = null;
+        while (root != null) {
+            if (node.data >= root.data) {
+                root = root.right;
+            } else {
+                successor = root;
+                root = root.left;
+            }
+        }
+        return successor;
+    }
 }
