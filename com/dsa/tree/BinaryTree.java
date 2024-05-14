@@ -1,5 +1,7 @@
 package com.dsa.tree;
 
+import java.util.*;
+
 public class BinaryTree {
     static class Node{
         int data;
@@ -30,6 +32,42 @@ public class BinaryTree {
         postorder(root.right);
         System.out.println(root.data);
     }
+    public static List<List<Integer>> levelrorder(Node root){
+        List<List<Integer>> result = new ArrayList<>();
+        if(root==null) return result;
+        /*This queue is to process the tree*/
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root); //adding root node to queue
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+            while (size-->0){
+                Node current = queue.poll();
+                currentLevel.add(current.data);
+                if(current.left!=null) queue.offer(current.left);
+                if(current.right!=null) queue.offer(current.right);
+            }
+            result.add(currentLevel);
+        }
+        return result;
+    }
+    public static List<Integer> iterativePreOrder(Node root){
+        List<Integer> result = new ArrayList<Integer>();
+        if(root==null) return result;
+        Stack<Node> stack = new Stack<Node>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node top = stack.pop();
+            result.add(top.data);
+            if(root.right!=null){
+                stack.push(root.right);
+            }
+            if(root.left!=null){
+                stack.push(root.left);
+            }
+        }
+        return result;
+    }
     public static void main(String []args){
         Node root = new Node(1);
         Node right = new Node(2);
@@ -44,5 +82,12 @@ public class BinaryTree {
 
         System.out.println("Post order traversal");
         postorder(root);
+
+        System.out.println("iterative pre order traversal ");
+        List<Integer> result = iterativePreOrder(root);
+        for(int e : result){
+            System.out.println(e);
+        }
+        
     }
 }
