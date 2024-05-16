@@ -40,4 +40,30 @@ public class MorrisTraversal {
         }
         return ans;
     }
+
+    // root->left->right (in morris traversal)
+    public static List<Integer> preOrder(Node root) {
+        List<Integer> ans = new ArrayList<Integer>();
+        while (root != null) {
+            if (root.left == null) {
+                ans.add(root.data);
+                root = root.right;
+            } else {
+                Node current = root.left;
+                while (current.right != null && current.right != root) {
+                    current = current.right;
+                }
+                // if left subtree is not traversed
+                if (current.right == null) {
+                    ans.add(root.data);
+                    current.right = root;
+                    root = root.left;
+                } else {
+                    current.right = null;
+                    root = root.right;
+                }
+            }
+        }
+        return ans;
+    }
 }
