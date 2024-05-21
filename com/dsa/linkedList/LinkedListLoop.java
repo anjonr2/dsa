@@ -34,4 +34,21 @@ public class LinkedListLoop {
         // hence return null
         return null;
     }
+
+    public boolean detectLoop(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        // this is done using tortoise and hare approach
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        // if it's a linear list then fast ptr will reach null
+        return false;
+    }
 }
