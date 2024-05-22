@@ -57,4 +57,33 @@ public class RotateLinkedList {
         }
         return node;
     }
+
+    // see this explaination :
+    // https://www.youtube.com/watch?v=fUs3B2ti97M&t=399s&pp=ygUkcm90YXRlIGRvdWJseWxpbmtlZCBsaXN0IGJ5IG4gbm9kZXMu
+    public DLLNode rotateDLL(DLLNode head, int k) {
+        if (head == null || head.next == null || k == 0) {
+            return head;
+        }
+        int count = 1;
+        DLLNode current = head;
+        while (count < k && current != null) {
+            current = current.next;
+            count++;
+        }
+        if (current == null) {
+            return head;
+        }
+
+        DLLNode kthNode = current;
+        while (current != null && current.next != null) {
+            current = current.next;
+        }
+        current.next = head;
+        head.prev = current;
+        head = kthNode.next;
+        head.prev = null;
+        kthNode.next = null;
+
+        return head;
+    }
 }
