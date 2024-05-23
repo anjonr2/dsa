@@ -29,4 +29,36 @@ public class AddToLinkedList {
         }
         return prev;
     }
+
+    public Node add(Node head) { // total time complexity of this approach is O(3n)
+        head = reverse(head); // O(n) - reverse in one pass
+        Node temp = head;
+        int carry = 1;
+
+        while (temp != null) {
+            // again this traversal O(n)
+            temp.data = temp.data + carry;
+
+            if (temp.data < 10) {
+                carry = 0;
+                break;
+            } else {
+                // since adding one 1 to linked list node data
+                // so maximum value will be 10 not beyond that
+                // hence temp.data = 0
+                temp.data = 0;
+                carry = 1;
+            }
+            temp = temp.next;
+        }
+        if (carry == 1) {
+            Node node = new Node(1);
+            head = reverse(head);
+            node.next = head;
+            head = node;
+            return head;
+        }
+        // O(n)
+        return reverse(head);
+    }
 }
