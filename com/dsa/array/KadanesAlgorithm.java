@@ -1,5 +1,8 @@
 package com.dsa.array;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class KadanesAlgorithm {
     public static int[] maximumSumSubArr(int arr[]) {
         int ans[] = new int[2];
@@ -29,13 +32,34 @@ public class KadanesAlgorithm {
         return ans;
     }
 
+    public static int majorityElement(int arr[]) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i])) {
+                int value = map.getOrDefault(map.get(arr[i]), 0);
+                map.put(arr[i], value + 1);
+            }
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > arr.length / 2)
+                return entry.getKey();
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         int arr[] = { -2, -3, 4, -1 - 2, 1, 5, -3 };
+        int arr2[] = { 2, 2, 3, 3, 1, 2, 2 };
 
-        int res[] = new int[2];
-        res = maximumSumSubArr(arr);
+        // int res[] = new int[2];
+        // res = maximumSumSubArr(arr);
 
-        System.out.println(
-                "Start and end idx of maximum sum sub array are " + "startIdx: " + res[0] + "endIdx: " + res[1]);
+        // System.out.println(
+        // "Start and end idx of maximum sum sub array are " + "startIdx: " + res[0] +
+        // "endIdx: " + res[1]);
+
+        int ans = majorityElement(arr2);
+        System.out.println("Majority element is " + ans);
     }
 }
