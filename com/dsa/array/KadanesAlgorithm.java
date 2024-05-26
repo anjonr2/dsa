@@ -33,16 +33,15 @@ public class KadanesAlgorithm {
     }
 
     public static int majorityElement(int arr[]) {
-        Map<Integer, Integer> map = new HashMap<>();
+        int n = arr.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            if (map.containsKey(arr[i])) {
-                int value = map.getOrDefault(map.get(arr[i]), 0);
-                map.put(arr[i], value + 1);
-            }
+        for (int i = 0; i < n; i++) {
+            int value = map.getOrDefault(arr[i], 0);
+            map.put(arr[i], value + 1);
         }
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > arr.length / 2)
+            if (entry.getValue() > (n / 2))
                 return entry.getKey();
         }
         return -1;
