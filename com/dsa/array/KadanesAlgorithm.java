@@ -47,6 +47,36 @@ public class KadanesAlgorithm {
         return -1;
     }
 
+    public static int majorityElementOptimisedSolultion(int arr[]) {
+        int cnt = 0;
+        int el = -1;
+        int n = arr.length;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (cnt == 0) {
+                cnt = 1;
+                el = arr[i];
+            } else if (arr[i] == el) {
+                cnt++;
+            } else {
+                cnt--;
+            }
+        }
+
+        int cnt2 = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == el) {
+                cnt2++;
+            }
+        }
+
+        if (cnt2 > n / 2) {
+            return el;
+        }
+
+        return -1;
+    }
+
     public static void main(String[] args) {
         int arr[] = { -2, -3, 4, -1 - 2, 1, 5, -3 };
         int arr2[] = { 2, 2, 3, 3, 1, 2, 2 };
