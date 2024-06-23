@@ -13,4 +13,17 @@ public class CheckIfSorted {
         }
         return true;
     }
+
+    public boolean check1(int[] nums) {
+        int n = nums.length;
+        if (n == 1 || n == 0) {
+            return true;
+        }
+        for (int i = 1; i < n; i++) {
+            if (nums[i] < nums[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
