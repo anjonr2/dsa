@@ -32,4 +32,24 @@ public class AllocateBooks {
         }
         return -1;
     }
+
+    public static int findPages1(ArrayList<Integer> arr, int n, int m) {
+        int low = Integer.MIN_VALUE;
+        int high = 0;
+        for (int i = 0; i < n; i++) {
+            low = Math.min(low, arr.get(i));
+            high += arr.get(i);
+        }
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int noOfStudents = countNoOfStudents(arr, mid);
+            if (noOfStudents > m) {
+                // if no of students required more than given then eliminate left half
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
 }
