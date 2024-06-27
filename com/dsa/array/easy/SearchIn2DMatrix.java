@@ -28,4 +28,25 @@ public class SearchIn2DMatrix {
         }
         return false;
     }
+
+    public boolean searchMatrix1(int[][] matrix, int target) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int low = 0;
+        int high = (n * m - 1);
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int rowIdx = mid / m;
+            int colIdx = mid % m;
+            if (matrix[rowIdx][colIdx] == target) {
+                return true;
+            } else if (matrix[rowIdx][colIdx] <= target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
 }
