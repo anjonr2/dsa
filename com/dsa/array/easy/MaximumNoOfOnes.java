@@ -37,7 +37,7 @@ public class MaximumNoOfOnes {
     }
 
     public int rowAndMaximumOnes1(int[][] mat) {
-        int cntMax = -1;
+        int cntMax = 0;
         int index = -1;
         int n = mat.length;
         int m = mat[0].length;
