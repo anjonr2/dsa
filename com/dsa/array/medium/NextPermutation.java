@@ -1,5 +1,6 @@
 package medium;
 
+// solution explained :Striver &  https://leetcode.com/problems/next-permutation/solutions/3473399/beats-100-full-explanation-in-steps/
 public class NextPermutation {
     public void nextPermutation(int[] nums) {
         int idx1 = -1;
