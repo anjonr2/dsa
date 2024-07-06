@@ -1,5 +1,6 @@
 package com.dsa.array.medium;
 
+// probelm descr : https://leetcode.com/problems/subarray-sum-equals-k/description/
 public class CountSubArray {
     public int subarraySum(int[] nums, int k) {
         int n = nums.length;
