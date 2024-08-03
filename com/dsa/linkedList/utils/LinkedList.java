@@ -45,6 +45,17 @@ public class LinkedList {
         return cnt;
     }
 
+    public static boolean searchInLinkedList(Node head, int val) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data == val) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
