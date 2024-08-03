@@ -56,6 +56,13 @@ public class LinkedList {
         return false;
     }
 
+    public static Node removeHead(Node head) {
+        if (head == null)
+            return head;
+        head = head.next;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
