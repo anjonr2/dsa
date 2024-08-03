@@ -75,6 +75,28 @@ public class LinkedList {
         return head;
     }
 
+    public static Node removeKthElement(Node head, int k) {
+        if (head == null)
+            return null;
+        Node temp = head;
+        Node prev = null;
+        int cnt = 0;
+        if (k == 1) {
+            head = head.next;
+            return head;
+        }
+        while (temp != null) {
+            cnt++;
+            if (cnt == k) {
+                prev.next = prev.next.next;
+                break;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
