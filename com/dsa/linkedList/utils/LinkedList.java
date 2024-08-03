@@ -27,9 +27,20 @@ public class LinkedList {
         return head;
     }
 
+    public static void traverse(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8 };
         Node head = convertArr2LL(arr);
         System.out.println("head data " + head.data);
+        System.out.println("--------------------");
+        System.out.println("Linked List Data are ");
+        traverse(head);
     }
 }
