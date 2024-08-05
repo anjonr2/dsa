@@ -136,6 +136,26 @@ public class LinkedList {
         return head;
     }
 
+    public static Node insertAtPositionK(Node head, int val, int k) {
+        if (head == null) {
+            if (k == 1)
+                return new Node(val);
+        }
+        if (k == 1) {
+            return new Node(val, head);
+        }
+        Node temp = head;
+        int cnt = 0;
+        while (temp != null) {
+            if (cnt == k - 1) {
+                Node node = new Node(val, temp.next);
+                temp.next = node;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
