@@ -147,6 +147,7 @@ public class LinkedList {
         Node temp = head;
         int cnt = 0;
         while (temp != null) {
+            cnt++;
             if (cnt == k - 1) {
                 Node node = new Node(val, temp.next);
                 temp.next = node;
