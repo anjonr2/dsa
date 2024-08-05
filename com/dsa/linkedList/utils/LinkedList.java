@@ -123,6 +123,19 @@ public class LinkedList {
         return temp;
     }
 
+    public static Node insertAtTail(Node head, int val) {
+        if (head == null) {
+            return new Node(val);
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        Node node = new Node(val);
+        temp.next = node;
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
