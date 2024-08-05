@@ -151,6 +151,7 @@ public class LinkedList {
             if (cnt == k - 1) {
                 Node node = new Node(val, temp.next);
                 temp.next = node;
+                break;
             }
             temp = temp.next;
         }
