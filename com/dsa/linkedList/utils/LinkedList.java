@@ -158,6 +158,24 @@ public class LinkedList {
         return head;
     }
 
+    public static Node insertBeforeValue(Node head, int data, int val) {
+        if (head == null) {
+            return null;
+        }
+        if (head.data == data) {
+            return new Node(val, head);
+        }
+
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.next.data == data) {
+                Node node = new Node(val, temp.next);
+                temp.next = node;
+            }
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 12, 5, 6, 8, 9, 20, 56 };
         Node head = convertArr2LL(arr);
