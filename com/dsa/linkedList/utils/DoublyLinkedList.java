@@ -30,9 +30,17 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static void traverse(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
         System.out.println(node.data);
+        traverse(node);
     }
 }
