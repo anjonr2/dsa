@@ -37,6 +37,17 @@ public class DoublyLinkedList {
         }
     }
 
+    public static Node deleteHead(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        Node prev = head;
+        head = head.next;
+        head.prev = null;
+        prev.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
