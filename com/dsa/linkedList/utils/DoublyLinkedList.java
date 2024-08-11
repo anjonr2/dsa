@@ -48,10 +48,27 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static Node deleteTail(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+        Node tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        Node prev = tail.prev;
+        tail.prev = null;
+        prev.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
         System.out.println(node.data);
+        traverse(node);
+        node = deleteTail(node);
+        System.out.println("Doubly linked list after deleting tail---");
         traverse(node);
     }
 }
