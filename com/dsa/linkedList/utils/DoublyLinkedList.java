@@ -93,6 +93,12 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static Node insertBeforeHead(Node head, int val) {
+        Node node = new Node(val, head, null);
+        head.prev = node;
+        return node;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
