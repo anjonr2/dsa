@@ -99,6 +99,21 @@ public class DoublyLinkedList {
         return node;
     }
 
+    public static Node insertBeforeTail(Node head, int val) {
+        if (head.next == null) {
+            insertBeforeHead(head, val);
+        }
+        Node tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        Node prev = tail.prev;
+        Node node = new Node(val, tail, prev);
+        prev.next = node;
+        tail.prev = node;
+        return head;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
@@ -110,6 +125,10 @@ public class DoublyLinkedList {
 
         Node head = removeKthElement(node, 2);
         System.out.println("Linked List after deleting 2nd element");
+        traverse(head);
+
+        head = insertBeforeHead(head, 11);
+        System.out.println("Linked List after inserting before head");
         traverse(head);
     }
 }
