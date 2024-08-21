@@ -101,7 +101,7 @@ public class DoublyLinkedList {
 
     public static Node insertBeforeTail(Node head, int val) {
         if (head.next == null) {
-            insertBeforeHead(head, val);
+            return insertBeforeHead(head, val);
         }
         Node tail = head;
         while (tail.next != null) {
@@ -111,6 +111,27 @@ public class DoublyLinkedList {
         Node node = new Node(val, tail, prev);
         prev.next = node;
         tail.prev = node;
+        return head;
+    }
+
+    public static Node insertBeforeKthElement(Node head, int k, int val) {
+        if (k == 1) {
+            return insertBeforeHead(head, val);
+        }
+        Node temp = head;
+        int cnt = 0;
+        while (temp != null) {
+            cnt += 1;
+            if (cnt == k) {
+                break;
+            }
+            temp = temp.next;
+        }
+        Node prev = temp.prev;
+        Node node = new Node(val, temp, prev);
+        prev.next = node;
+        temp.prev = node;
+
         return head;
     }
 
@@ -129,6 +150,10 @@ public class DoublyLinkedList {
 
         head = insertBeforeHead(head, 11);
         System.out.println("Linked List after inserting before head");
+        traverse(head);
+
+        head = insertBeforeTail(head, 55);
+        System.out.println("Linked List after inserting before tail node");
         traverse(head);
     }
 }
