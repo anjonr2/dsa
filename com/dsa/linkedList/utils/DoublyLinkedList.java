@@ -135,6 +135,13 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static void insertBeforeNode(Node node, int val) {
+        Node prev = node.prev;
+        Node newNode = new Node(val, node, prev);
+        prev.next = newNode;
+        node.prev = newNode;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
