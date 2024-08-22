@@ -1,5 +1,7 @@
 package com.dsa.linkedList.utils;
 
+import java.util.Stack;
+
 public class DoublyLinkedList {
     static class Node {
         int data;
@@ -140,6 +142,21 @@ public class DoublyLinkedList {
         Node newNode = new Node(val, node, prev);
         prev.next = newNode;
         node.prev = newNode;
+    }
+
+    public static Node reverse(Node head) {
+        Node temp = head;
+        Stack<Integer> stack = new Stack<>();
+        while (temp != null) {
+            stack.push(temp.data);
+            temp = temp.next;
+        }
+        temp = head;
+        while (temp != null) {
+            temp.data = stack.pop();
+            temp = temp.next;
+        }
+        return head;
     }
 
     public static void main(String[] args) {
