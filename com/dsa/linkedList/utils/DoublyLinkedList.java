@@ -159,6 +159,21 @@ public class DoublyLinkedList {
         return head;
     }
 
+    public static Node reverse1(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node prev = null;
+        Node current = head;
+        while (current != null) {
+            prev = current.prev;
+            current.prev = current.next;
+            current.next = prev;
+            current = current.prev;
+        }
+        return prev.prev;
+    }
+
     public static void main(String[] args) {
         int arr[] = { 12, 5, 6, 8, 9, 20, 56 };
         Node node = arr2DLLNode(arr);
@@ -178,6 +193,10 @@ public class DoublyLinkedList {
 
         head = insertBeforeTail(head, 55);
         System.out.println("Linked List after inserting before tail node");
+        traverse(head);
+
+        head = reverse1(head);
+        System.out.println("Linked List after reversing");
         traverse(head);
     }
 }
