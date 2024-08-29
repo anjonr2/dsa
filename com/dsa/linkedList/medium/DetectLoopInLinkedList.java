@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.List;
 
 public class DetectLoopInLinkedList {
     static class ListNode {
@@ -26,6 +25,20 @@ public class DetectLoopInLinkedList {
             }
             map.put(temp, 1);
             temp = temp.next;
+        }
+        return false;
+    }
+
+    public boolean hasCycle1(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
         }
         return false;
     }
