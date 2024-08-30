@@ -17,4 +17,26 @@ public class LengthOfTheLoop {
         }
         return 0;
     }
+
+    public static int findLength(ListNode slow, ListNode fast) {
+        int cnt = 0;
+        while (slow != fast) {
+            cnt++;
+            fast = fast.next;
+        }
+        return cnt;
+    }
+
+    public static int findLengthOfTheLoop1(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return findLength(slow, fast);
+            }
+        }
+        return 0;
+    }
 }
