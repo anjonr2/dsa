@@ -35,4 +35,26 @@ public class Add1ToLinkedList {
         }
         return reverse(head);
     }
+
+    public static int helper(ListNode head) {
+        if (head == null || head.next == null) {
+            return 1;
+        }
+        int carry = helper(head.next);
+        head.data = head.data + carry;
+        if (head.data < 10) {
+            return 0;
+        }
+        return 1;
+    }
+
+    public static ListNode addOne1(ListNode head) {
+        int carry = helper(head);
+        if (carry == 1) {
+            ListNode node = new ListNode(1);
+            node.next = head;
+            return node;
+        }
+        return head;
+    }
 }
