@@ -14,6 +14,8 @@ public class AddTwoLinkedList {
             if (list2 != null)
                 sum = sum + list2.data;
             ListNode node = new ListNode(sum % 10);
+            curr.next = node;
+            curr = node;
             carry = sum / 10;
             if (list1 != null)
                 list1 = list1.next;
