@@ -42,4 +42,24 @@ public class DeleteMiddleNode {
         }
         return head;
     }
+
+    public static Node deleteMiddle1(Node head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        Node slow = head;
+        Node fast = head;
+        Node prevMiddle = null;
+
+        while (fast != null && fast.next != null) {
+            prevMiddle = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node middle = prevMiddle.next;
+        prevMiddle.next = middle.next;
+        middle.next = null;
+        return head;
+    }
 }
