@@ -24,7 +24,7 @@ public class RemoveDuplicatesFromSortedDLL {
         Node temp = head;
         while (temp != null && temp.next != null) {
             Node nextNode = temp.next;
-            while (temp.data == nextNode.data) {
+            while (nextNode != null && temp.data == nextNode.data) {
                 nextNode = nextNode.next;
             }
             temp.next = nextNode;
