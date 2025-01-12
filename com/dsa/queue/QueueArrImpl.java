@@ -38,6 +38,9 @@ public class QueueArrImpl implements Queue {
 
     @Override
     public int front() {
+        if (front == -1) {
+            return -1;
+        }
         return queue[front];
     }
 
