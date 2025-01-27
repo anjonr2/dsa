@@ -21,6 +21,13 @@ public class InfixtoPrefix {
         return false;
     }
 
+    public static void reverse(String str) {
+        String reverse = "";
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reverse = reverse + str.charAt(i);
+        }
+    }
+
     public static String infixToPrefixConversion(String expr) {
         String prefix = "";
         int n = expr.length();
@@ -31,15 +38,34 @@ public class InfixtoPrefix {
         }
         Stack<Character> stack = new Stack<>();
         int i = 0;
-        while (i < n) {
-            char c = expr.charAt(i);
+        while (i < reverse.length()) {
+            char c = reverse.charAt(i);
             if (isOperand(c)) {
                 prefix = prefix + c;
             } else if (c == '(') {
                 stack.push(c);
+            } else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() == '(') {
+                    prefix = prefix + stack.peek();
+                    stack.pop();
+                }
+                // pop out the opening bracket
+                stack.pop();
+            } else {
+                if (c == '^') {
+                    if (!stack.isEmpty() && priority(c) <= priority(stack.peek())) {
+                        prefix = prefix + stack.peek();
+                        stack.pop();
+                    }
+                }
             }
             i += 1;
         }
+        while (!stack.isEmpty()) {
+            prefix = prefix + stack.peek();
+            stack.pop();
+        }
+        reverse(prefix);
         return prefix;
     }
 }
