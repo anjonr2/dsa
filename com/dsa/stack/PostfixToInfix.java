@@ -19,7 +19,7 @@ public class PostfixToInfix {
                 stack.pop();
                 String op2 = stack.peek();
                 stack.pop();
-                stack.push("(" + op1 + c + op2 + ")");
+                stack.push("(" + op2 + c + op1 + ")");
             }
             i++;
         }
