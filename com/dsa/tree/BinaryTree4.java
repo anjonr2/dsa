@@ -481,6 +481,20 @@ public class BinaryTree4 {
         return root;
     }
 
+    // flattern a given binary tree
+    public void flatten(Node root) {
+        if (root == null)
+            return;
+        Node left = root.left;
+        // to keep a track of the right node
+        Node right = root.right;
+        flatten(root.left);
+        root.right = root.left;
+        root.left = null;
+        Node prev = null;
+
+    }
+
     public static void main(String[] args) {
 
     }

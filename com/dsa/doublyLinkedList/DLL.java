@@ -1,5 +1,8 @@
 package com.dsa.doublyLinkedList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DLL {
     static class Node{
         int data;
@@ -14,6 +17,31 @@ public class DLL {
             this.data=data;
             this.next=null;
             this.prev=null;
+        }
+    }
+    /*Created a Pair class to return pair of list*/
+    static class Pair<K,V>{
+        K value1;
+        V value2;
+        public Pair(K value1, V value2){
+            this.value1=value1;
+            this.value2=value2;
+        }
+
+        public K getValue1() {
+            return value1;
+        }
+
+        public void setValue1(K value1) {
+            this.value1 = value1;
+        }
+
+        public V getValue2() {
+            return value2;
+        }
+
+        public void setValue2(V value2) {
+            this.value2 = value2;
         }
     }
     static Node convert2DLL(int arr[]){
@@ -146,6 +174,30 @@ public class DLL {
         }
         return head;
     }
+    public static List<Pair<Integer,Integer>> findAllPairs(Node head, int sum){
+        List<Pair<Integer,Integer>> res = new ArrayList<Pair<Integer,Integer>>();
+        Node left = head;
+        Node right = findTailNode(head);
+        while (left.data<right.data){
+            if(left.data+right.data==sum){
+                res.add(new Pair<>(new Integer(left.data),new Integer(right.data)));
+                left=left.next;
+                right=right.prev;
+            } else if (left.data+right.data<sum) {
+                left=left.next;
+            }else {
+                right=right.prev;
+            }
+        }
+        return res;
+    }
+    public static Node findTailNode(Node head){
+        Node tail = head;
+        while (tail!=null){
+            tail=tail.next;
+        }
+        return tail;
+    }
     public static void main(String []args){
         int arr[] = {15,5,8,7,2,3,4};
         Node head = convert2DLL(arr);
@@ -176,8 +228,10 @@ public class DLL {
         System.out.println("Linked List after inserting before 4th node");
         printDoublyLinkedList(head);
 
-        head=deleteAllOccurrences(head,8);
-        System.out.println("After deleting all occurrences of key "+8);
-        printDoublyLinkedList(head);
+//        head=deleteAllOccurrences(head,8);
+//        System.out.println("After deleting all occurrences of key "+8);
+//        printDoublyLinkedList(head);
+        List<Pair<Integer,Integer>> res = findAllPairs(head,15);
+        System.out.println("Pairs with the given sum is "+res);
     }
 }

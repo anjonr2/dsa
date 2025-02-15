@@ -23,4 +23,8 @@ public class ReverseLinkedList {
         head.next = null;
         return newHead;
     }
+
+    public static void main(String[] args) {
+        System.out.println("reverse linked list");
+    }
 }

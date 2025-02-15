@@ -78,25 +78,23 @@ public class BinaryTree2 {
 
         return 1 + Math.max(lh,rh);
     }
-    public static boolean isBalanced(Node root)
-    /*Calculating height of a given tree*/
-    public static int height(Node root){
-        if(root==null) return 0;
-        return 1+Math.max(height(root.left), height(root.right));
-    }{
-        if(root==null) return true;
-
-        /*here checking the height difference*/
-        if((Math.abs(height(root.left)-height(root.right)))>1) return false;
-
-        /*recursively calling this to the left and right of the binary tree*/
-        return isBalanced(root.left) && isBalanced(root.right);
+    public static boolean isBalanced(Node root){
+        return true;
     }
     /*Calculating height of a given tree*/
     public static int height(Node root){
         if(root==null) return 0;
         return 1+Math.max(height(root.left), height(root.right));
     }
+//    {
+//        if(root==null) return true;
+//
+//        /*here checking the height difference*/
+//        if((Math.abs(height(root.left)-height(root.right)))>1) return false;
+//
+//        /*recursively calling this to the left and right of the binary tree*/
+//        return isBalanced(root.left) && isBalanced(root.right);
+//    }
     public static boolean isBalanced2(Node root){
         return height2(root) !=-1;
     }
