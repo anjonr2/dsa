@@ -1,5 +1,6 @@
 package com.dsa.strings.RabinKarpAlgorithm.Bruteforce;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StringIndexOfOccurrencesOfAPattern {
