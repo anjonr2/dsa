@@ -10,6 +10,7 @@ public class DecimalToBinary {
                 binary.append("0");
             n = n / 2;
         }
+        binary.reverse();
         return binary.toString();
     }
 }
