@@ -1,6 +1,7 @@
 package com.dsa.BinaryTree.medium;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -19,8 +20,8 @@ public class ZigZagTraversal {
 
         boolean leftToRight = true;
         while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
             int size = queue.size();
+            List<Integer> level = new ArrayList<>(Collections.nCopies(size, 0));
             for (int i = 0; i < size; i += 1) {
                 Node node = queue.poll();
                 int index = leftToRight ? i : size - 1 - i;
