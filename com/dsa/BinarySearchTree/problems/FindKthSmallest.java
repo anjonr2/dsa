@@ -23,4 +23,22 @@ public class FindKthSmallest {
             inorder(root.right);
         }
     }
+
+    public void reverseInorder(Node root) {
+        while (root != null) {
+            reverseInorder(root.right);
+            if (--k == 0) {
+                result = root.val;
+                return;
+            }
+            reverseInorder(root.left);
+        }
+    }
+
+    public int findKthLargest(Node root, int k) {
+        this.result = -1;
+        this.k = k;
+        reverseInorder(root);
+        return result;
+    }
 }
