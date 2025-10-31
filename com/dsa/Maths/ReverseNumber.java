@@ -4,12 +4,14 @@ public class ReverseNumber {
     public static int reverseNumber(int number) {
 
         int reverseNumber = 0;
+        boolean isNegavtive = number < 0;
+        number = isNegavtive ? -number : number;
         while (number > 0) {
             int lastDigit = number % 10;
             reverseNumber = reverseNumber * 10 + lastDigit;
             number = number / 10;
         }
-        return reverseNumber;
+        return isNegavtive ? -reverseNumber : reverseNumber;
     }
 
     public static void main(String[] args) {
