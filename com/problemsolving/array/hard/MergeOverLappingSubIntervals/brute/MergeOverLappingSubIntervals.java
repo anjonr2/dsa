@@ -29,5 +29,5 @@ public class MergeOverLappingSubIntervals {
 }
 
 /*
- * Time Complexity : O(n2)
+ * Time Complexity : O(n2) + O(nlogn) nlogn is for sorting the intervals
  */
