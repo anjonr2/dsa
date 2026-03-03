@@ -7,7 +7,7 @@ public class FirstAndLastOccurence {
         return new int[] { first, last };
     }
 
-    private int lastOccurence(int[] nums, int target) {
+    public int lastOccurence(int[] nums, int target) {
         int last = -1;
         int n = nums.length;
         int low = 0, high = n - 1;
@@ -25,7 +25,7 @@ public class FirstAndLastOccurence {
         return last;
     }
 
-    private int firstOccurence(int[] nums, int target) {
+    public int firstOccurence(int[] nums, int target) {
         int first = -1;
         int n = nums.length;
         int low = 0, high = n - 1;
