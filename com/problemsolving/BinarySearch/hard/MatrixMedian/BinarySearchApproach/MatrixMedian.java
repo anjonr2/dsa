@@ -49,7 +49,9 @@ public class MatrixMedian {
         while (low <= high) {
             int mid = low + (high - low) / 2;
             int smallEqual = countSmallEqual(matrix, rows, cols, mid);
+
             if (smallEqual <= req)
+                // mid is too small to be a median so we eliminate left and move right
                 low = mid + 1;
             else
                 high = mid - 1;
