@@ -18,13 +18,26 @@ public class KMPAlgorithm {
                 i += 1;
                 j += 1;
             } else {
+                /*
+                 * here we have added check of j>0 because if j==0 then j-1 will lead to -1
+                 * which will give IndexOutOfBound error
+                 */
                 while (j > 0 && s.charAt(i) != s.charAt(j)) {
                     j = LPS[j - 1];
                 }
                 if (s.charAt(i) == s.charAt(j)) {
+                    /*
+                     * if element matches till index j that means there are total element that has
+                     * matched is j+1. since we follow 0 based indexing so no of elements will
+                     * always be index + 1
+                     */
                     LPS[i] = j + 1;
                     j += 1;
                 }
+                /*
+                 * irrespective of whether s.charAt(j) matches with s.chartAt(i) or not j moves
+                 * ahead by one point
+                 */
                 i += 1;
             }
         }
@@ -47,4 +60,10 @@ public class KMPAlgorithm {
 /*
  * Index in text = (Start in combined string s) - (Offset of text)
  * Index in text = i-m+1 - (m+1)
+ * LPS[j] means length longest prefix which is equal to suffix from idx 0 to j
+ * for the string starting at 0th idx since there is only one character so only
+ * prefix is there , but there is no suffix present
+ * 
+ * Time complexity is near about O(n)
+ * and space complexity is O(n) for the lps array that we are using
  */
