@@ -10,7 +10,7 @@ public class Palindrome {
         if (i >= s.length() / 2)
             return true;
 
-        /* If the start and end characters are not equal , it's not a palindrome */
+        /* check if the characters at the current position are equal or not */
         if (s.charAt(i) != s.charAt(s.length() - i - 1))
             return false;
 
