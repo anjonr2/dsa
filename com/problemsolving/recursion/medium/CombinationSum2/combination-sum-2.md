@@ -8,3 +8,5 @@ In the recursive approach
 first a coin is selected and substracted it's value from the target
 A valid combination is found when target becomes zero
 If the target becomes negative or all coins are considerd, the current path is abandoned
+
+1. Sort the coin denominations to handle duplicate efficiently
