@@ -51,3 +51,9 @@ public class LongestSubStringWithoutRepeatingCharacters {
         return maxLen;
     }
 }
+
+/*
+ * Time complexity : O(N)
+ * 
+ * Space complexity : O(256)
+ */
