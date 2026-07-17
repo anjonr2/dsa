@@ -53,9 +53,9 @@ public class MinimumWindowSubstring {
                 }
 
                 // remove left most character to find minimum length
-                hash[s.charAt(l)] -= 1;
+                hash[s.charAt(l)] += 1;
                 if (hash[s.charAt(l)] > 0) {
-                    count += 1;
+                    count -= 1;
                 }
                 l += 1;
             }
