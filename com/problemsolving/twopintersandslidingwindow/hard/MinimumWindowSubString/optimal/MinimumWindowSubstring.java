@@ -59,6 +59,7 @@ public class MinimumWindowSubstring {
                 }
                 l += 1;
             }
+            r += 1;
         }
 
         return sIndex == -1 ? "" : s.substring(sIndex, sIndex + minLength);
