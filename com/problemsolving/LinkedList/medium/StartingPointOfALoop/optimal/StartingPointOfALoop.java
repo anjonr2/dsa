@@ -1,4 +1,4 @@
-package com.problemsolving.LinkedList.medium.StartingPointOfALoop.brute;
+package com.problemsolving.LinkedList.medium.StartingPointOfALoop.optimal;
 
 class ListNode {
     int val;
