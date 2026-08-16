@@ -1,4 +1,4 @@
-package com.problemsolving.LinkedList.medium.StartingPointOfALoop.brute;
+package com.problemsolving.LinkedList.medium.StartingPointOfALoop.optimal;
 
 import java.util.HashMap;
 
@@ -25,42 +25,23 @@ class ListNode {
 public class StartingPointOfALoop {
 
     public ListNode findStartingPoint(ListNode head) {
-        /* Intialize a slow and fast pointers to the head of the list */
-        ListNode slow = head;
-        ListNode fast = head;
+        /* Use temp to traverse the linked list */
+        ListNode temp = head;
 
-        // Phase 1 : Detect the loop
-        while (fast != null && fast.next != null) {
+        /* HashMap to store all visited nodes */
+        HashMap<ListNode, Integer> map = new HashMap<>();
 
-            // Move slow by one step
-            slow = slow.next;
+        /* Traverse the list using temp */
+        while (temp != null) {
+            /* Check if the temp has been encountered again */
+            if (map.containsKey(temp))
+                return temp;
 
-            // Move fast by two steps
-            fast = fast.next.next;
+            /* Store temp as visited */
+            map.put(temp, 1);
 
-            // if slow and fast meet
-            // a loop is detected
-            if (slow == fast) {
-
-                // Reset the slow pointer
-                // to the head of the list
-                slow = head;
-
-                // Phase 2 : Find the first node of the loop
-                while (slow != fast) {
-
-                    // Move
-                    slow = slow.next;
-                    fast = fast.next;
-
-                    // when slow and fast meet again
-                    // it's the first node of the loop
-                }
-
-                // Return the first node of the loop
-                return slow;
-            }
-
+            /* Move to the next node */
+            temp = temp.next;
         }
 
         // if no loop is detected, return null
@@ -69,7 +50,10 @@ public class StartingPointOfALoop {
 }
 
 /*
- * Time complexity : O(N)
+ * Time complexity : O(N) , the algorithm goes through the entire linked list
+ * once, with 'N' representing the total number of nodes. As a result, the time
+ * complexity is linear or O(N)
  * 
- * Space complexity : O(1)
+ * Space complexity : O(N), the algorithm utilizes a hash map to store the nodes
+ * it encounters
  */
